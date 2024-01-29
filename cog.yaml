@@ -1,0 +1,22 @@
+build:
+  cuda: "11.8"
+  gpu: true
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "ffmpeg"
+    - "libsm6"
+    - "libxext6"
+  python_version: "3.9"
+  python_packages:
+    - "torch==1.12.1"
+    - "torchvision==0.13.1"
+    - "transformers==4.28"
+    - "diffusers==0.15.1"
+    - "opencv-python==4.5.1.48"
+    - "lpips"
+    - "accelerate"
+    - "tqdm"
+  run:
+    - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" 
+    - chmod +x /usr/local/bin/pget
+predict: "predict.py:Predictor"
